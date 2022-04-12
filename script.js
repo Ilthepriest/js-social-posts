@@ -101,16 +101,24 @@ posts.forEach((element, index, array) => {
     
 });
 
+let likeButtons = document.querySelectorAll("i");
+let likePersone = document.querySelectorAll(".quantiLike");
 
-let icon = document.querySelector("i");
-let likePersone = document.querySelector(".quantiLike");
 
-icon.addEventListener("click", blu);
+likeButtons.forEach((element, index, array)=> {
+    const button = element;
+    button.addEventListener("click", function(){
+        button.classList.toggle("blue");
+        let likesNumber = posts[index].likes
+        if(button.classList.contains("blue")){
+            likePersone[index].innerHTML = `Piace a ${likesNumber + 1} persone.`;
+        }else{
+            likePersone[index].innerHTML = `Piace a ${likesNumber} persone.`;
+        }
+    })
+})
 
-function blu(){
-    // icon.style.color = "blue"
-    icon.classList.toggle("blue")
-    likePersone.innerHTML = `Piace a ${posts[0].likes + 1} persone.`;
-    console.log(posts[0].likes);
-}
+
+
+
 
